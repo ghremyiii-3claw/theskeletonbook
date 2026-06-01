@@ -113,10 +113,9 @@ a:hover { color: var(--pumpkin); }
 .hero-cover img {
   border-radius: 6px;
   box-shadow: var(--shadow-lg);
-  transform: rotate(-1.5deg);
-  transition: transform 0.4s ease;
+  transition: transform 0.3s ease;
 }
-.hero-cover img:hover { transform: rotate(0deg) scale(1.01); }
+.hero-cover img:hover { transform: scale(1.02); }
 .kicker {
   font-family: var(--display);
   color: var(--pumpkin);

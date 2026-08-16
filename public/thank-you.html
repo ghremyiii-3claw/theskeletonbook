@@ -9,6 +9,37 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Caveat+Brush&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '932546405919107');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=932546405919107&ev=PageView&noscript=1" alt=""></noscript>
+<!-- End Meta Pixel -->
+<script>
+// Purchase value comes from the server via ?amt= so the price is never hardcoded here.
+// eventID = the Stripe session id, so refreshing this page dedupes instead of double-counting.
+(function () {
+  var q = new URLSearchParams(location.search);
+  var amt = parseFloat(q.get('amt'));
+  var qty = parseInt(q.get('qty') || '1', 10) || 1;
+  var sid = q.get('session_id');
+  if (!sid || !isFinite(amt)) return;          // no order in this URL: don't report one
+  var data = { value: amt, currency: 'USD', content_type: 'product',
+               contents: [{ id: 'skeleton-book', quantity: qty }] };
+  if (sid) { fbq('track', 'Purchase', data, { eventID: sid }); }
+  else { fbq('track', 'Purchase', data); }
+})();
+</script>
 </head>
 <body>
 <section class="hero" style="min-height: 80vh; display: flex; align-items: center;">

@@ -33,6 +33,7 @@ btn.addEventListener("click", async () => {
     if (!res.ok || !data.url) {
       throw new Error(data.error || "Checkout unavailable. Please try again in a moment.");
     }
+    if (window.fbq) fbq('track', 'InitiateCheckout');
     window.location.href = data.url;
   } catch (e) {
     errEl.textContent = e.message;

@@ -22,7 +22,7 @@ export async function onRequestPost(context) {
 
   const params = new URLSearchParams();
   params.append("mode", "payment");
-  params.append("success_url", `${origin}/thank-you.html?session_id={CHECKOUT_SESSION_ID}`);
+  params.append("success_url", `${origin}/thank-you.html?session_id={CHECKOUT_SESSION_ID}&amt=${((PRICE_CENTS * qty) / 100).toFixed(2)}&qty=${qty}`);
   params.append("cancel_url", `${origin}/#preorder`);
   params.append("submit_type", "book");
   params.append("billing_address_collection", "auto");

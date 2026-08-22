@@ -1,11 +1,11 @@
-// Cloudflare Pages Function — creates a Stripe Checkout Session for the preorder.
+// Cloudflare Pages Function — creates a Stripe Checkout Session for the book order.
 // Required env vars (set in CF Pages → Settings → Environment variables):
 //   STRIPE_SECRET_KEY  — sk_test_... in preview, sk_live_... in production
 //   SITE_URL           — e.g. https://theskeletonbook.com  (used for success/cancel URLs)
 
 const PRICE_CENTS = 2999; // $29.99
 const PRODUCT_NAME = "The Skeleton and the Chocolate Chip Cookie — Signed Hardcover";
-const PRODUCT_DESC = "Signed first-printing hardcover. Free US shipping. Ships when the first print run arrives.";
+const PRODUCT_DESC = "Signed first-printing hardcover. Free US shipping. In stock — ships within 1-2 business days.";
 
 export async function onRequestPost(context) {
   const { request, env } = context;
@@ -49,7 +49,7 @@ export async function onRequestPost(context) {
   params.append("shipping_options[0][shipping_rate_data][delivery_estimate][maximum][unit]", "business_day");
   params.append("shipping_options[0][shipping_rate_data][delivery_estimate][maximum][value]", "8");
 
-  // Metadata so Scott can spot preorders in his Stripe dashboard
+  // Metadata so Scott can spot book orders in his Stripe dashboard
   params.append("metadata[product]", "skeleton-cookie-book");
   params.append("metadata[printing]", "first");
   params.append("metadata[signed]", "true");

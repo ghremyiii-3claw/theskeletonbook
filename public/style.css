@@ -392,3 +392,8 @@ h1 em {
     display: block;
   }
 }
+
+/* ---- free printables ---- */
+.printables { padding: 4rem 0; background: var(--cream, #f7efe0); }
+.printables p { margin: 0 0 1.4rem; }
+.printables .cta-button { display: inline-block; }

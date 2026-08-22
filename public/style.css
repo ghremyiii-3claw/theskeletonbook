@@ -363,3 +363,32 @@ h1 em {
   width: 36px;
   height: 36px;
 }
+
+/* ---- hero origin hook ---- */
+.origin-hook {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.02rem;
+  line-height: 1.5;
+  color: var(--ink-soft, #5b5148);
+  margin: 0.15rem 0 1rem;
+}
+.origin-hook a {
+  font-style: normal;
+  white-space: nowrap;
+  color: var(--pumpkin-deep);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(160,80,30,0.35);
+}
+.origin-hook a:hover { border-bottom-color: var(--pumpkin-deep); }
+
+/* On phones the cover stacks above the text and eats the fold.
+   Cap it so the price and buy button stay reachable without scrolling. */
+@media (max-width: 900px) {
+  .hero-cover img {
+    max-height: 38vh;
+    width: auto;
+    margin: 0 auto;
+    display: block;
+  }
+}
